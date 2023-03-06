@@ -1,0 +1,8 @@
+Objectives for today. (I'll erase this later)
+- Signup a new user by accessing firebases' endpoints
+- Login an existing user through firebase
+
+Things to note:-
+- A route is the endpoint
+- Each route has an index.dart that contains how every request should be handled
+- 
