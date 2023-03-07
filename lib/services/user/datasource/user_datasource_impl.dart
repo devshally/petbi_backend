@@ -1,17 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:petbi_backend/models/responses/login_response.dart';
 import 'package:petbi_backend/models/responses/signup_response.dart';
+import 'package:petbi_backend/services/user/datasource/user_datasource.dart';
 import 'package:petbi_backend/services/user/entity/user.dart';
 
-/// [UserController].
-class UserController {
-  /// [UserController] constructor.
-  UserController({required this.firebaseAuth});
+///
+class UserDatasourceImpl implements UserDataSource {
+  ///
+  UserDatasourceImpl({required this.firebaseAuth});
 
-  /// FirebaseAuth class to handle user authentication.
+  ///
   final FirebaseAuth firebaseAuth;
 
-  /// Authenticate an existing user.
+  @override
   Future<LoginResponse> login({
     required String email,
     required String password,
@@ -32,11 +33,10 @@ class UserController {
     }
   }
 
-  /// Create a new user.
+  @override
   Future<SignupResponse> signup({
     required String email,
     required String password,
-    required String name,
   }) async {
     try {
       final result = await firebaseAuth.createUserWithEmailAndPassword(
